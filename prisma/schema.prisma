@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  patentNumber  String    @unique
+  name          String
+  password      String
+  manager       String?   // 담당자
+  contact       String?   // 연락처
+  inventor      String?   // 발명자
+  userType      String    // 사용자 구분 (1:법인, 2:개인, 3:법인+발명자)
+  termsAgreed   Boolean   // 약관동의여부
+  privacyAgreed Boolean   // 개인정보 동의여부
+  emailAgreed   Boolean   // 이메일수신동의여부
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  patents       Patent[]
+}
+
+model Patent {
+  id              String   @id @default(cuid())
+  applicationNo   String   @unique
+  registrationNo  String?  // 등록번호 (기존 patentNo에서 변경)
+  title           String
+  applicant       String
+  inventor        String
+  applicationDate DateTime
+  publicationDate DateTime?
+  registrationDate DateTime?
+  pctDeadline     DateTime? // PCT 마감일
+  pctNumber       String?   // PCT 번호
+  status          String
+  userId          String
+  user            User     @relation(fields: [userId], references: [id])
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
