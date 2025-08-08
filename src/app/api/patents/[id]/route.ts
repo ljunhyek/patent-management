@@ -7,7 +7,7 @@ const prisma = new PrismaClient()
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions)
@@ -15,9 +15,10 @@ export async function GET(
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
+    const resolvedParams = await params
     const patent = await prisma.patent.findFirst({
       where: {
-        id: params.id,
+        id: resolvedParams.id,
         userId: session.user.id
       },
       include: {
@@ -44,7 +45,7 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions)
@@ -52,6 +53,7 @@ export async function PUT(
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
+    const resolvedParams = await params
     const body = await request.json()
     const {
       applicationNo,
@@ -69,7 +71,7 @@ export async function PUT(
 
     const existingPatent = await prisma.patent.findFirst({
       where: {
-        id: params.id,
+        id: resolvedParams.id,
         userId: session.user.id
       }
     })
@@ -92,7 +94,7 @@ export async function PUT(
     }
 
     const patent = await prisma.patent.update({
-      where: { id: params.id },
+      where: { id: resolvedParams.id },
       data: {
         applicationNo,
         registrationNo: registrationNo || null,
@@ -126,7 +128,7 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions)
@@ -134,9 +136,10 @@ export async function DELETE(
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
+    const resolvedParams = await params
     const existingPatent = await prisma.patent.findFirst({
       where: {
-        id: params.id,
+        id: resolvedParams.id,
         userId: session.user.id
       }
     })
@@ -146,7 +149,7 @@ export async function DELETE(
     }
 
     await prisma.patent.delete({
-      where: { id: params.id }
+      where: { id: resolvedParams.id }
     })
 
     return NextResponse.json({ message: "Patent deleted successfully" })
