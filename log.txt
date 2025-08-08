@@ -1,0 +1,52 @@
+[14:14:06.018] Running build in Washington, D.C., USA (East) – iad1
+[14:14:06.018] Build machine configuration: 2 cores, 8 GB
+[14:14:06.033] Cloning github.com/ljunhyek/patent-management (Branch: master, Commit: f83315c)
+[14:14:06.293] Cloning completed: 260.000ms
+[14:14:08.486] Restored build cache from previous deployment (5mwmZLyaJYCeKaDJuoYjYidjhrDZ)
+[14:14:12.745] Running "vercel build"
+[14:14:14.219] Vercel CLI 44.7.3
+[14:14:14.574] Installing dependencies...
+[14:14:16.190] 
+[14:14:16.191] > patent-management@0.1.0 postinstall
+[14:14:16.191] > prisma generate
+[14:14:16.191] 
+[14:14:16.680] Prisma schema loaded from prisma/schema.prisma
+[14:14:16.904] 
+[14:14:16.905] ✔ Generated Prisma Client (v5.22.0, engine=none) to ./node_modules/@prisma/client in 53ms
+[14:14:16.905] 
+[14:14:16.905] Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+[14:14:16.906] 
+[14:14:16.906] Help us improve the Prisma ORM for everyone. Share your feedback in a short 2-min survey: https://pris.ly/orm/survey/release-5-22
+[14:14:16.906] 
+[14:14:17.103] 
+[14:14:17.104] up to date in 2s
+[14:14:17.105] 
+[14:14:17.105] 166 packages are looking for funding
+[14:14:17.105]   run `npm fund` for details
+[14:14:17.138] Detected Next.js version: 15.1.0
+[14:14:17.144] Running "npm run build"
+[14:14:17.259] 
+[14:14:17.259] > patent-management@0.1.0 build
+[14:14:17.259] > prisma generate && prisma db push && next build
+[14:14:17.259] 
+[14:14:17.607] Prisma schema loaded from prisma/schema.prisma
+[14:14:17.792] 
+[14:14:17.793] ✔ Generated Prisma Client (v5.22.0, engine=none) to ./node_modules/@prisma/client in 47ms
+[14:14:17.793] 
+[14:14:17.793] Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+[14:14:17.794] 
+[14:14:17.794] Tip: Easily identify and fix slow SQL queries in your app. Optimize helps you enhance your visibility: https://pris.ly/--optimize
+[14:14:17.794] 
+[14:14:17.815] ┌─────────────────────────────────────────────────────────┐
+[14:14:17.816] │  Update available 5.22.0 -> 6.13.0                      │
+[14:14:17.816] │                                                         │
+[14:14:17.816] │  This is a major update - please follow the guide at    │
+[14:14:17.816] │  https://pris.ly/d/major-version-upgrade                │
+[14:14:17.816] │                                                         │
+[14:14:17.816] │  Run the following to update                            │
+[14:14:17.816] │    npm i --save-dev prisma@latest                       │
+[14:14:17.816] │    npm i @prisma/client@latest                          │
+[14:14:17.816] └─────────────────────────────────────────────────────────┘
+[14:14:18.341] Prisma schema loaded from prisma/schema.prisma
+[14:14:18.344] Datasource "db": PostgreSQL database "postgres", schema "public" at "aws-0-ap-northeast-2.pooler.supabase.com:6543"
+
